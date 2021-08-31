@@ -34,6 +34,7 @@ UserSchema.pre('save', async function(next){
 		user.password = await encrypt(user.password);
 	}
 	user._id = nanoid.nanoid(ID_SIZE);
+	user.password = undefined;
 	user.lastAccess = Date.now();
 
 	next();

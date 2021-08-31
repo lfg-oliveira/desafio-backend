@@ -5,25 +5,11 @@ services:
     image: mongo
     restart: always
     volumes: 
-      - myapp:/usr/db
+      - ./database-persistent:/data/db
     ports: 
       - '27017:27017'
     environment: 
       MONGO_INITDB_DATABASE: 'userData'
-
-
-  # mongo-express:
-  #   image: mongo-express:0.54
-  #   ports: 
-  #     - '8081:8081'
-  #   restart: always
-  #   container_name: mongo-express
-  #   depends_on: 
-  #     - 'mongodb'
-  #   environment: 
-  #      ME_CONFIG_MONGODB_ADMINUSERNAME: "${MONGODB_ROOT_USERNAME}"
-  #      ME_CONFIG_MONGODB_ADMINPASSWORD: "${MONGODB_ROOT_PASSWORD}"
-  #      ME_CONFIG_MONGODB_URL: "mongodb://${MONGODB_ROOT_USERNAME}:${MONGODB_ROOT_PASSWORD}@localhost:27017/"
 
   node:
     image: rest-desafio:latest
