@@ -18,8 +18,9 @@ Seção 2. EXECUÇÃO
 ============================
 
   - Windows:
-    Para executar os contêineres clique com o botão sobre o arquivo 'build.ps1' e clique em 'Executar
-    no Powershell'. Se for executado corretamente, siga para a Seção 3.
+    Para executar os contêineres clique com o botão direito (ou esquerdo, caso o mouse esteja configurado 
+    para canhotos) sobre o arquivo 'build.ps1' e clique em 'Executar no Powershell'. Se o script for executado 
+    corretamente, siga para a Seção 3.
 
   - Mac e Linux:
     Caso tenha o bash instalado em sua máquina, rodar o script build.sh se encarregará de iniciar 
@@ -52,25 +53,25 @@ Rotas CRUD:
       Corpo:	
         - Deve receber um JSON contendo:
           - Nome Real do usuário.
-            Nome do campo: name
+              Nome do campo: name
           - Nome de usuário
-            Nome do campo: username
+              Nome do campo: username
           - Senha
-            Nome do campo: password
+              Nome do campo: password
       Resposta:
         - Retorna um json contendo:
           Caso conclua sem erros:
             - Nome real do usuário
-              Nome do campo: name
+                Nome do campo: name
             - Nome de usuário
-              Nome do campo: username
+                Nome do campo: username
             - Identificador do usuário
-              Nome do campo: _id
+                Nome do campo: _id
             - Última data de acesso:
-              Nome do campo: lastAccess
+                Nome do campo: lastAccess
           Em caso de erro:
             - Mensagem de erro
-              Nome do campo: error
+                Nome do campo: error
   
   READ:
     Endpoint: [url base]/api/user/[_id]
@@ -84,16 +85,16 @@ Rotas CRUD:
           Campos:
             Caso conclua sem erros:
               - Nome real do usuário
-                Nome do campo: name
+                  Nome do campo: name
               - Nome de usuário
-                Nome do campo: username
+                  Nome do campo: username
               - Identificador do usuário
-                Nome do campo: _id
+                  Nome do campo: _id
               - Última data de acesso:
-                Nome do campo: lastAccess
+                  Nome do campo: lastAccess
             Em caso de erro:
               - Mensagem de erro
-                Nome do campo: error
+                  Nome do campo: error
 
   UPDATE:
     Endpoint: [url base]/api/user/[_id]
@@ -105,24 +106,24 @@ Rotas CRUD:
         - Deve receber um JSON com as informações a serem alteradas:
           Campos:
             - Nome real do usuário
-              Nome do campo: name
+                Nome do campo: name
             - Nome de usuário
-              Nome do campo: username
+                Nome do campo: username
             - Senha
-              Nome do campo: password
+                Nome do campo: password
       Resposta:
         - Retorna os dados atualizados do usuário
           Campos:
             Caso conclua sem erros:
               - Nome real do usuário
-                Nome do campo: name
+                  Nome do campo: name
               - Nome de usuário
-                Nome do campo: username
+                  Nome do campo: username
               - Senha
-                Nome do campo: password
+                  Nome do campo: password
             Em caso de erro:
               - Mensagem de erro
-                Nome do campo: error	
+                  Nome do campo: error	
 
   DELETE
     Endpoint: [url base]/api/user/[_id]
@@ -136,7 +137,7 @@ Rotas CRUD:
           Campos:
             Caso conclua sem erros:
               - Mensagem de sucesso
-                Nome do campo: message
+                  Nome do campo: message
             Em caso de erro:
               - Mensagem de erro
-                Nome do campo: error
+                  Nome do campo: error
