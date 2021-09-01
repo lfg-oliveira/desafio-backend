@@ -7,13 +7,8 @@ instruir o usuário a instalar, rodar e testar a API em sua máquina local. Os p
 guir construir a aplicação são os seguintes:
 ________________________________________________________________________________________________
 Pré-requisitos:
-<<<<<<< HEAD
   - Docker: https://www.docker.com/get-started
   - Docker-compose: https://docs.docker.com/compose/install/
-=======
-  - Docker:  https://www.docker.com/get-started
-  - Docker-compose: https://docs.docker.com/compose/install/
->>>>>>> bbbb9f2c791af424b974d7198bd1d4200c6d55d8
 
   Tendo-os instalados e funcionando corretamente na máquina, já é possível rodar a aplicação.
 ________________________________________________________________________________________________
