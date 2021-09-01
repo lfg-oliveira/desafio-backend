@@ -34,7 +34,8 @@ router.get('/:userId', async (req, res) => {
 
 //UPDATE
 router.put('/:userId', async (req, res) => {
-	if(req.body.password != undefined){
+	// encriptar a senha se houver um campo password no req
+	if(req.body.password != undefined){ 
 		req.body.password = await encryptReqBodyPassword(req);
 	}
 	User.findByIdAndUpdate(req.params.userId, req.body, {new: true}, (err, doc) => {
