@@ -8,7 +8,6 @@ router.post('/register', async (req, res) =>{
 	const { username } = req.body;
 	try {
 		const user = await User.create(req.body);
-		// user.password = undefined;
 		return res.status(200).json({user});
 	} 
 	catch (err) {
@@ -29,7 +28,7 @@ router.get('/:userId', async (req, res) => {
 		res.status(200).json({ user });
 	})
 	.catch(err => {
-		res.status(400).json( {error: 'No user with that ID.' } );
+		res.status(400).json( {error: 'No user with that ID' } );
 	});
 });
 
@@ -39,11 +38,11 @@ router.put('/:userId', async (req, res) => {
 		req.body.password = await encryptReqBodyPassword(req);
 	}
 	User.findByIdAndUpdate(req.params.userId, req.body, {new: true}, (err, doc) => {
-		if(err == null){
+		if(doc != null){
 			console.log(req.body);
 			return res.status(200).json({ doc });
 		}
-		return res.status(400).json({ error: err });
+		return res.status(400).json({ error: 'Failed to update user with that ID' });
 	});
 });
 
@@ -54,7 +53,7 @@ router.delete('/:userId',  (req, res) => {
 		{
 			return res.status(400).json({error: 'Couldn\'t delete the user'});
 		}
-		return res.status(200).json({message: 'Successfully deleted user.'});
+		return res.status(200).json({message: 'Successfully deleted user'});
 	});
 });
 

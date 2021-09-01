@@ -1,0 +1,142 @@
+=========================
+Seção 1. INTRODUÇÃO
+=========================
+
+	Este repositório é de uma API REST integrada a um banco de dados MongoDB. O intuito deste README é
+instruir o usuário a instalar, rodar e testar a API em sua máquina local. Os pré-requisitos para conse-
+guir construir a aplicação são os seguintes:
+________________________________________________________________________________________________
+Pré-requisitos:
+	- Docker:  				https://www.docker.com/get-started
+	- Docker-compose: https://docs.docker.com/compose/install/
+
+	Tendo-os instalados e funcionando corretamente na máquina, já é possível rodar a aplicação.
+________________________________________________________________________________________________
+
+============================
+Seção 2. EXECUÇÃO
+============================
+
+	- Windows:
+		Para executar os contêineres clique com o botão sobre o arquivo 'build.ps1' e clique em 'Executar
+		no Powershell'. Se for executado corretamente, siga para a Seção 3.
+
+	- Mac e Linux:
+		Caso tenha o bash instalado em sua máquina, rodar o script build.sh se encarregará de iniciar 
+		os contêineres. O script pode ser executado tanto gráficamente, quanto pelo terminal da se-
+		guinte maneira:
+			$ chmod +x ./build.sh # mudando o arquivo para ser executável
+			$ ./build.sh
+		O script pode demorar alguns minutos para terminar sua execução.
+
+		Caso contrário, é possivel executar o programa com os seguintes comandos no terminal.
+			$ docker build -t rest-desafio .
+			$ docker-compose up -d
+		
+	Completando qualquer dos passos acima, já é possível consumir a API no localhost, através da porta
+	5000 (http://localhost:5000). Para mais informações sobre a API, confira a Seção 3. 
+		
+===================================
+Seção 3. DETALHES DA API
+===================================
+[url base]: http://localhost:5000/
+uri da api: /api/user
+Rotas CRUD:
+	CREATE:
+		Endpoint: [url base]/api/user/register
+		Como fazer o Request:
+			Método: POST
+			Função:
+				- Insere um novo usuário no banco de dados.
+		
+			Corpo:	
+				- Deve receber um JSON contendo:
+					- Nome Real do usuário.
+						Nome do campo: name
+					- Nome de usuário
+						Nome do campo: username
+					- Senha
+						Nome do campo: password
+			Resposta:
+				- Retorna um json contendo:
+					Caso conclua sem erros:
+						- Nome real do usuário
+							Nome do campo: name
+						- Nome de usuário
+							Nome do campo: username
+						- Identificador do usuário
+							Nome do campo: _id
+						- Última data de acesso:
+							Nome do campo: lastAccess
+					Em caso de erro:
+						- Mensagem de erro
+							Nome do campo: error
+	
+	READ:
+		Endpoint: [url base]/api/user/[_id]
+		Como fazer o request:
+			Método: GET
+			Função:
+				- Retorna informações do usuário com o identificado igual a [_id]
+			Corpo:
+			Resposta:
+				- Retorna um JSON contendo os dados do usuário:
+					Campos:
+						Caso conclua sem erros:
+							- Nome real do usuário
+								Nome do campo: name
+							- Nome de usuário
+								Nome do campo: username
+							- Identificador do usuário
+								Nome do campo: _id
+							- Última data de acesso:
+								Nome do campo: lastAccess
+						Em caso de erro:
+							- Mensagem de erro
+								Nome do campo: error
+
+	UPDATE:
+		Endpoint: [url base]/api/user/[_id]
+		Como fazer o request:
+			Método: PUT
+			Função:
+				- Alterar dados do usuário já existente, cujo id é [_id]
+			Corpo:
+				- Deve receber um JSON com as informações a serem alteradas:
+					Campos:
+						- Nome real do usuário
+							Nome do campo: name
+						- Nome de usuário
+							Nome do campo: username
+						- Senha
+							Nome do campo: password
+			Resposta:
+				- Retorna os dados atualizados do usuário
+					Campos:
+						Caso conclua sem erros:
+							- Nome real do usuário
+								Nome do campo: name
+							- Nome de usuário
+								Nome do campo: username
+							- Senha
+								Nome do campo: password
+						Em caso de erro:
+							- Mensagem de erro
+								Nome do campo: error	
+
+	DELETE
+		Endpoint: [url base]/api/user/[_id]
+		Como fazer o request:
+			Método: DELETE
+			Função:
+				- Deletar o usuário com id igual a [_id] do banco de dados
+			Corpo:
+			Resposta:
+				- Retorna um JSON com uma mensagem do status da operação
+					Campos:
+						Caso conclua sem erros:
+							- Mensagem de sucesso
+								Nome do campo: message
+						Em caso de erro:
+							- Mensagem de erro
+								Nome do campo: error

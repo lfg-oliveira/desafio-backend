@@ -5,7 +5,8 @@ const ID_SIZE = 10;
 
 const UserSchema = mongoose.Schema({
 	_id: {
-		type: String
+		type: String,
+		immutable: true
 	},
 	name: {
 		type: String,
@@ -30,9 +31,6 @@ const UserSchema = mongoose.Schema({
 
 UserSchema.pre('save', async function(next){
 	const user = this;
-	if(user.isModified("password")){
-		user.password = await encrypt(user.password);
-	}
 	user._id = nanoid.nanoid(ID_SIZE);
 	user.password = undefined;
 	user.lastAccess = Date.now();
