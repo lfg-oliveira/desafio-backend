@@ -40,7 +40,7 @@ Seção 2. EXECUÇÃO
 ===================================
 Seção 3. DETALHES DA API
 ===================================
-
+--outFile server.js 
 [url base]: http://localhost:5000/
 uri da api: /api/user
 Rotas CRUD:

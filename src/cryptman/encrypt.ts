@@ -1,14 +1,14 @@
 const crypto = require('crypto');
 const secret = process.env.SECRET_KEY;
 
-async function encrypt(password)
+export async function encrypt(password: String)
 {
 	const sha256Hasher = await crypto.createHmac("sha256", secret);
 	const hash = sha256Hasher.update(password).digest("hex");
 	return hash;
 }
 
-async function encryptReqBodyPassword(req)
+export async function encryptReqBodyPassword(req: any)
 {
 	if(req.body.password != undefined)
 	{
@@ -17,4 +17,3 @@ async function encryptReqBodyPassword(req)
 	}
 	return -1;
 }
-module.exports = { encrypt, encryptReqBodyPassword }

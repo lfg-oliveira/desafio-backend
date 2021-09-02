@@ -1,4 +1,5 @@
-const mongoose = require('../database/db_connect');
+import { Model } from 'mongoose';
+import {mongoose} from '../database/db_connect';
 const {encrypt} = require('../cryptman/encrypt');
 const nanoid = require('nanoid'); 
 const ID_SIZE = 10;
@@ -29,8 +30,8 @@ const UserSchema = mongoose.Schema({
 });
 
 
-UserSchema.pre('save', async function(next){
-	const user = this;
+UserSchema.pre('save', async function(this: any, next: any){
+	const user: any = this;
 	user._id = nanoid.nanoid(ID_SIZE);
 	user.password = undefined;
 	user.lastAccess = Date.now();
